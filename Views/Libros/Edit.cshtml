@@ -1,0 +1,4 @@
+@model Biblioteca.Web.Models.Libro
+@{ ViewData["Title"] = "Editar libro"; }
+<div class="narrow-page"><a class="back-link" asp-action="Index">← Volver al catálogo</a><div class="form-card"><div class="form-card-heading"><span class="eyebrow">Catálogo</span><h1>Editar libro</h1></div><form asp-action="Edit" method="post"><input asp-for="LibroId" type="hidden" /><partial name="_Formulario" model="Model" /><div class="form-actions"><a class="btn btn-ghost" asp-action="Index">Cancelar</a><button class="btn btn-primary" type="submit">Guardar cambios</button></div></form></div></div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

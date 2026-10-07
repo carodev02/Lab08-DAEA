@@ -1,0 +1,7 @@
+@model Biblioteca.Web.Models.Libro
+<tr>
+    <td><div class="item-title">@Model.Titulo</div><div class="item-meta">@Model.AutorNombre</div></td>
+    <td><span class="mono-value">@Model.ISBN</span></td>
+    <td class="text-center"><span class="quantity-badge">@Model.Ejemplares</span></td>
+    <td class="text-end action-links"><a asp-action="Details" asp-route-id="@Model.LibroId">Ver</a><a asp-action="Edit" asp-route-id="@Model.LibroId">Editar</a><a class="danger-link" asp-action="Delete" asp-route-id="@Model.LibroId">Retirar</a></td>
+</tr>

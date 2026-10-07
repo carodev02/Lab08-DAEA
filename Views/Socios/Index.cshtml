@@ -1,0 +1,16 @@
+@model IEnumerable<Biblioteca.Web.Models.Socio>
+@{ ViewData["Title"] = "Socios"; }
+<div class="page-heading"><div><span class="eyebrow">Comunidad</span><h1>Socios activos</h1><p>Personas habilitadas para solicitar libros.</p></div><a class="btn btn-primary" asp-action="Create">Nuevo socio</a></div>
+<div class="table-shell"><div class="table-responsive"><table class="table app-table align-middle mb-0">
+    <thead><tr><th>Socio</th><th>DNI</th><th>Correo electrónico</th><th class="text-center">Estado</th></tr></thead>
+    <tbody>
+    @if (Model.Any())
+    {
+        @foreach (var socio in Model)
+        {
+            <tr><td><div class="member-cell"><span class="member-avatar">@socio.Nombre.Substring(0, 1).ToUpper()</span><span class="item-title">@socio.Nombre</span></div></td><td><span class="mono-value">@socio.DNI</span></td><td>@socio.Email</td><td class="text-center"><span class="status-badge status-active">Activo</span></td></tr>
+        }
+    }
+    else { <tr><td colspan="4" class="empty-state">No hay socios activos.</td></tr> }
+    </tbody>
+</table></div></div>

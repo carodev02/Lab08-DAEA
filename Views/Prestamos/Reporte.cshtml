@@ -1,0 +1,24 @@
+@model IEnumerable<Biblioteca.Web.Models.PrestamoReporte>
+@{ ViewData["Title"] = "Reporte de préstamos"; }
+<div class="page-heading"><div><span class="eyebrow">Seguimiento</span><h1>Reporte de préstamos</h1><p>Consulta los movimientos registrados en el periodo seleccionado.</p></div></div>
+<form method="get" class="filter-panel">
+    <div class="field-group"><label class="form-label" for="desde">Desde</label><input class="form-control" type="date" id="desde" name="desde" value="@ViewData["Desde"]" /></div>
+    <div class="field-group"><label class="form-label" for="hasta">Hasta</label><input class="form-control" type="date" id="hasta" name="hasta" value="@ViewData["Hasta"]" /></div>
+    <button class="btn btn-primary" type="submit">Actualizar reporte</button>
+</form>
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<div class="report-summary"><span><strong>@Model.Count()</strong> préstamos encontrados</span><span>@ViewData["Desde"] — @ViewData["Hasta"]</span></div>
+<div class="table-shell"><div class="table-responsive"><table class="table app-table align-middle mb-0">
+    <thead><tr><th>Socio</th><th>Libros</th><th>Préstamo</th><th>Fecha límite</th><th class="text-center">Estado</th></tr></thead>
+    <tbody>
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            var estadoClase = item.Estado.Equals("Devuelto", StringComparison.OrdinalIgnoreCase) ? "status-returned" : item.FechaLimite.Date < DateTime.Today ? "status-late" : "status-pending";
+            <tr><td><div class="item-title">@item.Socio</div><div class="item-meta">Préstamo #@item.PrestamoId</div></td><td class="books-cell">@item.Libros</td><td>@item.FechaPrestamo.ToString("dd/MM/yyyy")</td><td>@item.FechaLimite.ToString("dd/MM/yyyy")</td><td class="text-center"><span class="status-badge @estadoClase">@item.Estado</span></td></tr>
+        }
+    }
+    else { <tr><td colspan="5" class="empty-state">No hay préstamos dentro de este periodo.</td></tr> }
+    </tbody>
+</table></div></div>

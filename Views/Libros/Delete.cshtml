@@ -1,0 +1,3 @@
+@model Biblioteca.Web.Models.Libro
+@{ ViewData["Title"] = "Retirar libro"; }
+<div class="narrow-page"><a class="back-link" asp-action="Index">← Volver al catálogo</a><div class="confirm-card"><span class="confirm-icon">!</span><span class="eyebrow">Confirmación</span><h1>Retirar del catálogo</h1><p><strong>@Model.Titulo</strong> dejará de aparecer entre los libros activos.</p><div class="confirm-meta"><span>@Model.AutorNombre</span><span>@Model.ISBN</span></div><form asp-action="Delete" method="post" class="form-actions justify-content-center"><input type="hidden" name="id" value="@Model.LibroId" /><a class="btn btn-ghost" asp-action="Index">Cancelar</a><button class="btn btn-danger-soft" type="submit">Retirar libro</button></form></div></div>

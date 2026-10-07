@@ -1,0 +1,15 @@
+@{ ViewData["Title"] = "Inicio"; }
+<section class="hero-panel">
+    <div class="hero-copy">
+        <span class="eyebrow">Panel de biblioteca</span>
+        <h1>Todo el catálogo,<br />en un solo lugar.</h1>
+        <p>Administra libros y socios, y consulta los préstamos con una experiencia simple y ordenada.</p>
+        <div class="d-flex flex-wrap gap-3"><a class="btn btn-primary btn-lg" asp-controller="Libros" asp-action="Index">Ver catálogo</a><a class="btn btn-soft btn-lg" asp-controller="Prestamos" asp-action="Reporte">Consultar préstamos</a></div>
+    </div>
+    <div class="hero-visual" aria-hidden="true"><div class="book book-one"><span></span></div><div class="book book-two"><span></span></div><div class="book book-three"><span></span></div><div class="orb"></div></div>
+</section>
+<section class="feature-grid">
+    <a class="feature-card" asp-controller="Libros" asp-action="Index"><span class="feature-icon">01</span><h2>Catálogo</h2><p>Busca, registra y mantiene actualizados los libros disponibles.</p><span class="feature-link">Abrir catálogo →</span></a>
+    <a class="feature-card" asp-controller="Socios" asp-action="Index"><span class="feature-icon">02</span><h2>Socios</h2><p>Consulta miembros activos y registra nuevos lectores.</p><span class="feature-link">Ver socios →</span></a>
+    <a class="feature-card" asp-controller="Prestamos" asp-action="Reporte"><span class="feature-icon">03</span><h2>Préstamos</h2><p>Revisa movimientos y estados dentro de un rango de fechas.</p><span class="feature-link">Abrir reporte →</span></a>
+</section>
